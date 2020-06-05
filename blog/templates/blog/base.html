@@ -1,23 +1,53 @@
 {% load static %}
 <html>
     <head>
-        <title>Django Girls blog</title>
+        <title>Health First</title>        
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+        <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <!-- Fengyuan Chen's Datepicker -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.css" integrity="sha256-b88RdwbRJEzRx95nCuuva+hO5ExvXXnpX+78h8DjyOE=" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js" integrity="sha256-/7FLTdzP6CfC1VBAj/rsp3Rinuuu9leMRGd354hvk0k=" crossorigin="anonymous"></script>
+
+
     </head>
     <body>
-        <div class="page-header">
-            <h1><a href="/">Django Girls Blog</a></h1>
-        </div>
-        <div class="content container">
-            <div class="row">
-                <div class="col-md-8">
+        <nav class="navbar">
+            <span class="navbar-toggle" id="js-navbar-toggle">
+                <i class="fas fa-bars"></i>
+            </span>
+            <a href="{% url 'post_list' %}"><h1>Mizizi</h1></a> 
+            <ul class="main-nav" id="js-menu">
+                <li>
+                    <a href="{% url 'post_list' %}"  class="nav-links">Home</a>
+                </li>
+                <li>
+                    <a href="{% url 'about' %}" class="nav-links">Resources</a>
+                </li>
+                <li>
+                    <a href="{% url 'contact' %}" class="nav-links">Submit Reports</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li> <a href="{% url 'post_new' %}" class="nav-links"><span class="glyphicon glyphicon-plus"></span></a></li>
+                <li> <a href="{% url 'post_draft_list' %}" class="nav-links"><span class="glyphicon glyphicon-edit"></span></a></li>
+                
+                
+            {% endif %}
+            </ul>
+        </nav>
+                <div class="row">
+                
                 {% block content %}
                 {% endblock %}
-                </div>
+                
+               
             </div>
-        </div>
+        
     </body>
 </html>

@@ -1,13 +1,87 @@
 {% extends 'blog/base.html' %}
-
+{{ div | safe }}
 {% block content %}
-    {% for post in posts %}
-        <div class="post">
-            <div class="date">
-                {{ post.published_date }}
-            </div>
-            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-            <p>{{ post.text|linebreaksbr }}</p>
+
+    
+    
+    <div class="col-md-8">
+        <div id="container"></div>
+    </div>
+    <div class="col-md-4">
+        <div id="container2"></div>
+    </div>
+    
+    <script src="https://code.highcharts.com/highcharts.src.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+            <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script>
+      Highcharts.chart('container', {
+          chart: {
+              type: 'column'
+          },
+          credits: {
+             enabled: false
+            },
+          title: {
+              text: 'Kenya Corona Cases by County'
+          },
+          data: {
+            googleSpreadsheetKey: '1aBwCUrmk9QwiDjgV_J7Y4K972XrHGBEPzl8BPu3DFZY',
+                }, 
+                title: {
+                    text: 'Overall Summary of Covid-19 Cases in Nairobi since 22nd may',
+                },
+      });
+    </script>
+
+   
+    <div class="col-md-8" >
+        <h2>Dial 719 or *719# to contact the Ministry of Health for any questions</h2>
+        {% for post in posts %}
+        <div class="visuals">
+            
+            
+            <h2 class="card-title"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            <img src="{{post.cover.url}}" alt="Description image" width="250" height="250" style="float: left; margin-right: 20px;">      
+            <p class="card-text">{{ post.text|slice:":300" }}</p>
+            
+            <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary">Read More &rarr;</a>
         </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
+    
+    <div class="col-md-4">
+        <h2>Guidelines for Covid-19</h2>
+        <p class="card-text">
+            <p class="card-text" style="font-style: italic;">
+                <a class="twitter-timeline" data-height="1500" data-theme="dark" href="https://twitter.com/MOH_Kenya?ref_src=twsrc%5Etfw">Tweets by MOH_Kenya</a> 
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  
+            </p>
+    </p>    
+            
+    <script>
+       Highcharts.chart('container2', 
+        {chart: {
+              type: 'pie'
+          },
+          credits: {
+             enabled: false
+            },
+        data: {
+            googleSpreadsheetKey: '1Tv5dNK6xfvLX2ruSiDXcTV98jn2aPevT2GaBLzYqbS0',
+                }, 
+                title: {
+                    text: 'Overall Summary of Covid-19 Cases in Kenya',
+                },
+        
+    }
+        );
+    </script>
+        
+        
+        
+        
+    </div>
+    <script src="https://account.snatchbot.me/script.js"></script><script>window.sntchChat.Init(112235)</script>  
+    
 {% endblock %}

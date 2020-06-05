@@ -1,0 +1,97 @@
+{% extends 'blog/base.html' %}
+
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="about-wrapper " style="background-color: rgb(250, 250, 250);">
+  <div class="about" style= "border-radius:30px; background-color: #909090;">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Matatu Sacco</th>
+          <th>Operating Route</th>
+          <th>Date of Occurrence</th>
+          <th>Date of Reporting</th>
+          <th>Description of Offense</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for report in reports %}
+          <tr>
+            <td>{{ report.name }}</td>
+            <td>{{ report.sacco_name }}</td>
+            <td>{{report.station_from}}   to  {{report.station_to}}</td>
+            <td>{{report.occurrence_date|date}}</td>
+            
+            <td>{{report.created_date|date}}</td>
+            <td>{{report.offense_description}}</td>
+            
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="7">No data</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+    
+
+<div class="about" style="margin-top: 10px; border-radius:30px; background-color: #909090;">
+  {% if new_report %}
+  <div class="alert alert-success" role="alert">
+    Your report has been posted! Thank You.
+  </div>
+  {% else %}
+  <h3>Leave a report</h3> 
+  <div>
+          <form method="post" style="margin-top: 1.3em;">
+            {% csrf_token %}
+
+            <p style="padding: 10px; border-radius:10px; width: 50%;">{{ report_form.name|as_crispy_field }}</p>
+            <p style="color: white; font-style: italic;">You do not have to use your real name**</p>
+            <div class="form-row" >
+              <div class="form-group col-md-6 mb-0" style="padding: 10px; border-radius:10px;">
+                {{ report_form.station_from|as_crispy_field }}
+              </div>
+              <div class="form-group col-md-6 mb-0" style="padding: 10px; border-radius:10px;">
+                {{ report_form.station_to|as_crispy_field }}
+              </div>
+            </div>
+    
+              <div class="form-row">
+                <div class="form-group col-md-6 mb-0" style="padding: 10px; border-radius:10px;">
+                  {{ report_form.sacco_name|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-6 mb-0" style="padding: 10px; border-radius:10px;">
+                  
+                  {{ report_form.occurrence_date|as_crispy_field}}
+                </div>
+              </div>
+              <div class="row" style="padding: 10px; border-radius:10px; text-align: left;">
+                {{ report_form.offense_description|as_crispy_field }}
+
+              </div>
+            
+            
+              <button type="submit" class="btn btn-primary  btn-lg" style="background-color: #C25100;">Submit</button>
+            
+              {% endif %}
+      </form>
+    </div>
+      
+
+      <script>
+        $(function () {
+          $("#id_date").datepicker({
+            format:'dd/mm/yyyy',
+          });
+        });
+      </script>
+  </div>
+
+
+</div>
+{% endblock %}

@@ -1,23 +1,73 @@
+
+.my-links{
+  justify-items: center;
+  padding-top: 5px;
+    margin:0 auto;
+    float: right; 
+    width: 55%;  
+    
+}
+.top-links{
+  color: #0a6618;
+  font-size: xx-large;
+  justify-self: center; 
+  padding-left: 20px; 
+}
+a:link {
+    color: #0a6618;
+    text-size-adjust: 100dp;
+  }
+a:visited {
+    color: #0a6618;
+  }
+a:hover {
+    color: #0a6618;
+  }
+a:active {
+    color: #0a6618;
+  }
+
 h1 a, h2 a {
     color: #C25100;
 }
 body {
-    padding-left: 15px;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  background-color: #fdfdfd;
 }
+
+.head_text {
+  color: white;
+}
+
+.card {
+  box-shadow: 0 16px 48px #E3E7EB;
+}
+ .card-text{
+            width: 100%;
+        }
 h1 a, h2 a {
     color: #C25100;
     font-family: 'Lobster';
 }
 .page-header {
-    background-color: #C25100;
+    background-color:  #000000 ;
     margin-top: 0;
     padding: 20px 20px 20px 40px;
+    min-height: 200px;
+    margin: 0 auto;
+    overflow: auto;
+    
+}
+.image_nav{
+  height: 180px;
 }
 
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
-    color: #ffffff;
+    color: #C25100;
     font-size: 36pt;
     text-decoration: none;
+    margin: 0 auto;
 }
 
 .content {
@@ -26,6 +76,8 @@ h1 a, h2 a {
 
 h1, h2, h3, h4 {
     font-family: 'Lobster', cursive;
+    width: fit-content;
+    color: #C25100;
 }
 
 
@@ -47,11 +99,176 @@ h1, h2, h3, h4 {
     font-size: 26pt;
     margin-right: 20px;
 }
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.row{
+  width: 95%;
+  align-items: center;
+  margin-left: 30px;
+  justify-items: center;
 
+}
+.visuals{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    display: inline-block;
+}
 .post {
     margin-bottom: 70px;
+    justify-items: center;
+    border-style: solid;
+    border-color: red;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+  
 }
 
 .post h2 a, .post h2 a:visited {
     color: #000000;
+}
+.about-wrapper{
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+.about{
+  width: 60%;
+  height: auto;
+  text-align: center;
+  justify-content: center;
+  display: inline-block;
+  background-color: whitesmoke;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+ 
+}
+.form-contact{
+  min-width: 60%;
+}
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.navbar {
+  font-size: 18px;
+  background-color: black;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 10px;
+  
+}
+
+.main-nav {
+  list-style-type: none;
+  display: none;
+}
+
+.nav-links,
+.logo {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.main-nav li {
+  text-align: center;
+  margin: 15px auto;
+}
+
+.logo {
+  display: inline-block;
+  font-size: 22px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.navbar-toggle {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24px;
+}
+
+.active {
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 0;
+      height: 70px;
+      align-items: center;
+  }
+
+  .main-nav {
+      display: flex;
+      margin-right: 30px;
+      flex-direction: row;
+      justify-content: flex-end;
+  }
+
+  .main-nav li {
+      margin: 0;
+  }
+
+  .nav-links {
+      margin-left: 40px;
+      font-size: x-large;
+  }
+
+  .logo {
+      margin-top: 0;
+  }
+
+  .navbar-toggle {
+      display: none;
+  }
+
+  .logo:hover,
+  .nav-links:hover {
+      color: rgba(255, 255, 255, 1);
+  }
+}
+
+table {
+  color: #333;
+  background: white;
+  border: 1px solid coral;
+  font-size: 12pt;
+  border-collapse: collapse;
+  border-radius: 10px;
+}
+table thead th,
+table tfoot th {
+  color: #0a6618;
+  background: rgba(0,0,0,.1);
+}
+table caption {
+  padding:.5em;
+}
+table th,
+table td {
+  padding: .5em;
+  border: 1px solid lightgrey;
 }

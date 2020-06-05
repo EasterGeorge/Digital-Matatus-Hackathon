@@ -1,0 +1,28 @@
+
+ 
+  {% extends 'blog/base.html' %}
+
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="about-wrapper" style="background-color: white;">
+
+<div class="about" style="margin-top: 10px; border-radius:30px; background-color: #909090;">
+  <h2>Resources for Covid-19</h2>
+  {% for resource in resources %}
+  
+  <h2 class="card-title">{{ resource.title }}</a></h2>
+
+  <p class="card-text">{{ resource.text}}<br>
+    <a href="{{resource.contact}}" target="_blank">{{resource.contact}}</a>
+  </p>
+  <div class="date" style="float: right; color: white;">
+    {{ resource.published_date }}
+</div>
+</div>
+</div>
+  {% endfor %} 
+
+{% endblock %}
